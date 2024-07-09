@@ -1,5 +1,5 @@
 import TestView from './Views/Test/TestView'
-import './App.css'
+import './assets/styles/global.css'
 import questionsExample from './temp/questions'
 
 function App () {

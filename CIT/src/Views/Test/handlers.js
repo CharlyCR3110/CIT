@@ -9,3 +9,10 @@ export const handlePrevPage = (endIndex, questionList, setCurrentPage, currentPa
     setCurrentPage(currentPage - 1)
   }
 }
+
+export const handleAnswerSelect = (answers, setAnswers, setError, questionIndex, answer) => {
+  const newAnswers = [...answers]
+  newAnswers[questionIndex] = answer
+  setAnswers(newAnswers)
+  setError('') // Clear error message if any
+}

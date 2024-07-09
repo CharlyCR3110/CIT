@@ -3,3 +3,9 @@ export const handleNextPage = (endIndex, questionList, setCurrentPage, currentPa
     setCurrentPage(currentPage + 1)
   }
 }
+
+export const handlePrevPage = (endIndex, questionList, setCurrentPage, currentPage) => {
+  if (currentPage > 0) {
+    setCurrentPage(currentPage - 1)
+  }
+}

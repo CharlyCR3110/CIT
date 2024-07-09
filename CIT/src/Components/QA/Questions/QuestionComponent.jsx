@@ -1,13 +1,17 @@
 import '../../../assets/styles/question.css'
-
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AnswerComponent from '../Answer/AnswerComponent'
 
-const QuestionComponent = ({ questionText, answers, correctAnswer }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState('')
+const QuestionComponent = ({ questionText, answers, selectedAnswer, onAnswerSelect }) => {
+  const [localSelectedAnswer, setLocalSelectedAnswer] = useState(selectedAnswer)
+
+  useEffect(() => {
+    setLocalSelectedAnswer(selectedAnswer)
+  }, [selectedAnswer])
 
   const handleSelect = (answer) => {
-    setSelectedAnswer(answer)
+    setLocalSelectedAnswer(answer)
+    onAnswerSelect(answer)
   }
 
   return (
@@ -18,17 +22,11 @@ const QuestionComponent = ({ questionText, answers, correctAnswer }) => {
           <AnswerComponent
             key={index}
             answer={answer}
-            selected={selectedAnswer === answer}
+            selected={localSelectedAnswer === answer}
             handleSelect={() => handleSelect(answer)}
           />
         ))}
       </div>
-      {selectedAnswer && (
-      // temporary feedback (correct/incorrect)
-        <div className={`feedback ${selectedAnswer === correctAnswer ? 'correct' : 'incorrect'}`}>
-          {selectedAnswer === correctAnswer ? 'Correct!' : 'Incorrect!'}
-        </div>
-      )}
     </div>
   )
 }

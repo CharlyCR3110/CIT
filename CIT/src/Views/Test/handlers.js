@@ -1,10 +1,8 @@
-export const handleNextPage = (endIndex, questionList, setCurrentPage, currentPage) => {
-  if (endIndex < questionList.length) {
-    setCurrentPage(currentPage + 1)
-  }
+export const handleNextPage = (setCurrentPage, currentPage) => {
+  setCurrentPage(currentPage + 1)
 }
 
-export const handlePrevPage = (endIndex, questionList, setCurrentPage, currentPage) => {
+export const handlePrevPage = (setCurrentPage, currentPage) => {
   if (currentPage > 0) {
     setCurrentPage(currentPage - 1)
   }

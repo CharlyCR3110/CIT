@@ -49,3 +49,23 @@
 /* en teoria no deberia ser necesario,
   ya que el examen lo aplican en una pc
   pero por si acaso */
+  
+/* for small screens */
+@media (max-width: 1400px) {
+  .question-list {
+    position: relative;
+    right: 0;
+    margin-top: 0;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* for mobile */
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -17,7 +17,7 @@ export const handleAnswerSelect = (answers, setAnswers, setError, questionIndex,
 
 export const getCurrentAnswers = (answers, setError) => {
   // check if there are any unanswered questions
-  const unansweredQuestions = answers.some(answer => answer === null)
+  const unansweredQuestions = answers.some(answer => answer === undefined || answer === null)
   if (unansweredQuestions) {
     setError('Por favor, responde a todas las preguntas antes de enviar el test.')
     return

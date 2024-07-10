@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import QuestionComponent from '../../Components/QA/Questions/QuestionComponent'
 import { handleNextPage, handlePrevPage, handleAnswerSelect, getCurrentAnswers } from './handlers'
+import '../../assets/styles/test_view.css'
 
 const TestView = ({ questionList, testName }) => {
   const [currentPage, setCurrentPage] = useState(0)
@@ -14,10 +15,10 @@ const TestView = ({ questionList, testName }) => {
 
   return (
     <>
-      <header className='App-header'>
+      <header className='app-header'>
         <h1>{testName}</h1>
       </header>
-      <div>
+      <div className='questions-container'>
         {currentQuestions.map((question, index) => (
           <QuestionComponent
             key={startIndex + index}
@@ -29,14 +30,32 @@ const TestView = ({ questionList, testName }) => {
         ))}
       </div>
       <div className='pagination'>
-        <button onClick={() => handlePrevPage(endIndex, questionList, setCurrentPage, currentPage)} disabled={currentPage === 0} className='prev'>Anterior</button>
-        <button onClick={() => handleNextPage(endIndex, questionList, setCurrentPage, currentPage)} disabled={endIndex >= questionList.length} className='next'>Siguiente</button>
+        <button
+          onClick={() => handlePrevPage(setCurrentPage, currentPage)}
+          disabled={currentPage === 0}
+          className='prev'
+        >
+          Anterior
+        </button>
+        {endIndex >= questionList.length
+          ? (
+            <button
+              onClick={() => getCurrentAnswers(answers, setError)}
+              className='submit'
+            >
+              Enviar respuestas
+            </button>
+            )
+          : (
+            <button
+              onClick={() => handleNextPage(setCurrentPage, currentPage)}
+              disabled={endIndex >= questionList.length}
+              className='next'
+            >
+              Siguiente
+            </button>
+            )}
       </div>
-      {endIndex >= questionList.length && (
-        <div className='submit'>
-          <button onClick={() => getCurrentAnswers(answers, setError)}>Enviar respuestas</button>
-        </div>
-      )}
       {error && <div className='error'>{error}</div>}
     </>
   )

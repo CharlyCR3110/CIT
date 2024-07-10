@@ -2,7 +2,7 @@ import '../../../assets/styles/question.css'
 import React, { useState, useEffect } from 'react'
 import AnswerComponent from '../Answer/AnswerComponent'
 
-const QuestionComponent = ({ questionText, answers, selectedAnswer, onAnswerSelect }) => {
+const QuestionComponent = ({ index, questionText, answers, selectedAnswer, onAnswerSelect }) => {
   const [localSelectedAnswer, setLocalSelectedAnswer] = useState(selectedAnswer)
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const QuestionComponent = ({ questionText, answers, selectedAnswer, onAnswerSele
 
   return (
     <div className='question-container'>
-      <h2 className='question-text'>{questionText}</h2>
+      <h2 className='question-text'>{index + 1}. {questionText}</h2>
       <div className='answers-container'>
         {answers.map((answer, index) => (
           <AnswerComponent

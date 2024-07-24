@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import QuestionComponent from '../../Components/QA/Questions/QuestionComponent'
-import QuestionListComponent from '../../Components/QA/QuestionList/QuestionListComponent'
+import QuestionComponent from '../../components/organism/QuestionComponent'
+import QuestionListComponent from '../../components/organism/QuestionListComponent'
 import { handleNextPage, handlePrevPage, handleAnswerSelect, getCurrentAnswers } from './handlers'
 import '../../assets/styles/test_view.css'
 

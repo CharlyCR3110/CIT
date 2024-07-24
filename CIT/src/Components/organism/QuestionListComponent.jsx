@@ -1,5 +1,7 @@
+// src/components/organisms/QuestionListComponent.js
 import React from 'react'
-import '../../../assets/styles/question_list_component.css'
+import QuestionList from '../molecules/QuestionList'
+import '../../assets/styles/question_list_component.css'
 
 const QuestionListComponent = ({ questionList, currentPage, setCurrentPage, answers }) => {
   const handleClick = (index) => {
@@ -17,17 +19,7 @@ const QuestionListComponent = ({ questionList, currentPage, setCurrentPage, answ
   return (
     <div className='question-list'>
       <h3>Lista de Preguntas</h3>
-      <div className='grid-container'>
-        {questionList.map((question, index) => (
-          <div
-            key={index}
-            className={`grid-item ${answers[index] ? 'answered' : 'unanswered'}`}
-            onClick={() => handleClick(index)}
-          >
-            {index + 1}
-          </div>
-        ))}
-      </div>
+      <QuestionList questionList={questionList} answers={answers} handleClick={handleClick} />
     </div>
   )
 }

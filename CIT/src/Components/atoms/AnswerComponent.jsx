@@ -1,4 +1,5 @@
-import '../../../assets/styles/answer.css'
+import React from 'react'
+import '../../assets/styles/answer.css'
 
 const AnswerComponent = ({ answer, handleSelect, selected }) => {
   return (

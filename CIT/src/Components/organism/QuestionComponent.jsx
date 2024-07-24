@@ -1,6 +1,6 @@
-import '../../../assets/styles/question.css'
 import React, { useState, useEffect } from 'react'
-import AnswerComponent from '../Answer/AnswerComponent'
+import AnswersList from '../molecules/AnswersList'
+import '../../assets/styles/question.css'
 
 const QuestionComponent = ({ index, questionText, answers, selectedAnswer, onAnswerSelect }) => {
   const [localSelectedAnswer, setLocalSelectedAnswer] = useState(selectedAnswer)
@@ -17,16 +17,11 @@ const QuestionComponent = ({ index, questionText, answers, selectedAnswer, onAns
   return (
     <div className='question-container'>
       <h2 className='question-text'>{index + 1}. {questionText}</h2>
-      <div className='answers-container'>
-        {answers.map((answer, index) => (
-          <AnswerComponent
-            key={index}
-            answer={answer}
-            selected={localSelectedAnswer === answer}
-            handleSelect={() => handleSelect(answer)}
-          />
-        ))}
-      </div>
+      <AnswersList
+        answers={answers}
+        localSelectedAnswer={localSelectedAnswer}
+        handleSelect={handleSelect}
+      />
     </div>
   )
 }
